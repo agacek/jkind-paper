@@ -19,11 +19,11 @@
 
 \begin{itemize}
 \item k-induction
-\item Template invariat generation
-\item PDR
-\item Iterval Generalization
-\item Advice
+\item Template invariant generation
+\item PDR (+IA)
+\item Interval Generalization
 \item IVC
+\item Advice
 \item Smoothing
 \end{itemize}
 
@@ -52,8 +52,13 @@
 \item Relationship to Kind 2~\cite{champion2016cav}
   \begin{itemize}
   \item Both based on PKind
-  \item We were first / independently developed
+  \item Independently developed from Kind 2, released a couple years earlier
   \item Multiplatform due to Java (Windows, Linux, Mac)
+  \item JKind has focused on integration from the very beginning. Used
+    in AGREE and internal MC/DC test case generation work from day
+    one. JKind uses SMTInterpol by default so that it can be packaged
+    into other applications and run everywhere with no setup required.
+    We also provide JKindApi for things like UI, etc.
   \end{itemize}
 \end{itemize}
 
