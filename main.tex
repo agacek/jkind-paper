@@ -1,5 +1,7 @@
 \documentclass{article}
 
+\usepackage{cite}
+
 \title{JKind}
 \author{Andrew Gacek, John Backes, Mike Whalen, Lucas Wagner}
 
@@ -35,7 +37,8 @@
   \item WBS
   \item ULB LOI
   \end{itemize}
-\item SpeAR
+\item SpeAR~\cite{fifarek2017nfm}
+\item SIMPAL~\cite{wagner2017spin}
 \item Internal MC/DC test case generation (public?)
 \item Model-based fuzzing (public?)
 \item Other speculative work
@@ -46,7 +49,7 @@
 \begin{itemize}
 \item Benchmarks: reference Kind 2 paper and say we are competitive on
   speed and strength but initial start up time due to JVM
-\item Relationship to Kind 2
+\item Relationship to Kind 2~\cite{champion2016cav}
   \begin{itemize}
   \item Both based on PKind
   \item We were first / independently developed
@@ -61,6 +64,9 @@
 \item Arrays
 \item Uninterpreted functions
 \end{itemize}
+
+\bibliography{main}{}
+\bibliographystyle{plain}
 
 \end{document}
 
