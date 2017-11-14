@@ -153,29 +153,15 @@ please write a couple paragraphs about \jkind in AGREE]
 
 \section{Discussion \& Related Work}
 
+\paragraph{Performance.} \jkind is competetative with similar solvers
+\cite{champion2016cav}. The most noticable bottleneck of \jkind is the
+start-up time of the Java Virtual Machine (JVM). This cost is
+insignificant for most models, but causes decreased performance for
+benchmarks consisting of many very small models.
+
 \begin{itemize}
-\item Benchmarks: reference Kind 2 paper and say we are competitive on
-  speed and strength but initial start up time due to JVM
-\item Relationship to Kind 2~\cite{champion2016cav}
-  \begin{itemize}
-  \item Both based on PKind
-  \item Independently developed from Kind 2, released a couple years earlier
-  \item Multi platform due to Java (Windows, Linux, Mac)
-  \item \jkind has focused on integration from the very beginning. Used
-    in AGREE and internal MC/DC test case generation work from day
-    one. \jkind uses SMTInterpol by default so that it can be packaged
-    into other applications and run everywhere with no setup required.
-    We also provide \jkindapi for things like UI, etc. Maybe
-    \jkindapi-type discussion belongs in integration and application
-    section?
-  \end{itemize}
 \item JKind to excel for simulation?
 \item JKind excel output for counterexamples
-\end{itemize}
-
-\section{Experimental \& Future Work}
-
-\begin{itemize}
 \item Inductive data-types
 \item Arrays
 \item Uninterpreted functions
