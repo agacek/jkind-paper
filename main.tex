@@ -125,13 +125,13 @@ to be positive and its particular value does not matter.
 
 \section{Integration \& Applications}
 
-\jkind is the backend for a variety of user-facing applications. In
+\jkind is the back-end for a variety of user-facing applications. In
 this section, we briefly highlight some of these applications and how
 they apply the features of JKind. As \jkind is written in Java, it is
 very easy to integrate into other Java applications. Moreover, we
 created the \jkindapi package which contains utilities for creating
 \lustre specifications, calling \jkind, processing \jkind results,
-graphically displaying realtime results, and nicely formatting
+graphically displaying real-time results, and nicely formatting
 counterexamples. Many of the applications in this section make heavy
 use of \jkindapi.
 
@@ -153,14 +153,20 @@ please write a couple paragraphs about \jkind in AGREE]
 
 \section{Discussion \& Related Work}
 
-\paragraph{Performance.} \jkind is competetative with similar solvers
-\cite{champion2016cav}. The most noticable bottleneck of \jkind is the
+\paragraph{Performance.} \jkind is competitive with similar solvers
+\cite{champion2016cav}. The most noticeable bottleneck of \jkind is the
 start-up time of the Java Virtual Machine (JVM). This cost is
 insignificant for most models, but causes decreased performance for
 benchmarks consisting of many very small models.
 
+\paragraph{Simulation.} To help users and developers to understand
+\lustre specifications, \jkind can compile a \lustre specification
+into an Excel-based simulation. The simulation uses the formula and
+reference language of Excel to compute, in real-time, the output of the
+specification as inputs are entered and manipulated. This spreadsheet
+interface to the specification is satisfyingly capable and versatile.
+
 \begin{itemize}
-\item JKind to excel for simulation?
 \item JKind excel output for counterexamples
 \item Inductive data-types
 \item Arrays
@@ -179,5 +185,5 @@ benchmarks consisting of many very small models.
 % TeX-master: "main.tex"
 % End:
 
-%  LocalWords:  BMC PDR IVC MaxSat Yices SpeAR SIMPAL Gryphon UI
-%  LocalWords:  JKindApi natively
+%  LocalWords:  BMC PDR IVC MaxSat Yices SpeAR SIMPAL Gryphon UI JVM
+%  LocalWords:  JKindApi natively PKind
