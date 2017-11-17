@@ -3,6 +3,7 @@
 \usepackage{cite}
 \usepackage{xspace}
 \usepackage{hyperref}
+\usepackage{xcolor}
 
 \newcommand{\jkind}{{\sc JKind}\xspace}
 \newcommand{\jkindapi}{{\sc JKindApi}\xspace}
@@ -10,6 +11,10 @@
 \newcommand{\spear}{{\sc SpeAR}\xspace}
 \newcommand{\simpal}{{\sc SIMPAL}\xspace}
 \newcommand{\limp}{{\sc Limp}\xspace}
+\newcommand{\agree}{{\sc AGREE}\xspace}
+%\newcommand{\internal}{{\it internal}\xspace}
+
+\newcommand{\todo}[1]{{\color{red} #1}}
 
 \renewcommand{\paragraph}[1]{\vspace{5pt}\noindent {\bf #1}}
 
@@ -128,6 +133,9 @@ to be positive and its particular value does not matter.
 
 \section{Integration \& Applications}
 
+\todo{Talk about how some are open source and some are proprietary.}
+\todo{Talk about why integration is so important?}
+
 \jkind is the back-end for a variety of user-facing applications. In
 this section, we briefly highlight some of these applications and how
 they apply the features of JKind. As \jkind is written in Java, it is
@@ -138,8 +146,8 @@ graphically displaying real-time results, and nicely formatting
 counterexamples. Many of the applications in this section make heavy
 use of \jkindapi.
 
-\paragraph{Assume Guarantee Reasoning Environment (AGREE). } [John:
-please write a couple paragraphs about \jkind in AGREE]
+\paragraph{Assume Guarantee Reasoning Environment (\agree). } [John:
+please write a couple paragraphs about \jkind in \agree]
 
 \paragraph{Specification and Analysis of Requirements (\spear).}
 The Specification and Analysis of Requirements tool, \spear for short,
@@ -150,7 +158,7 @@ using model checking to ensure they are correct, consistent, and
 realizable.
 
 \spear uses \jkind to prove properties over requirements, and uses IVC
-to create a tracability matrix between requirements and properties.
+to create a traceability matrix between requirements and properties.
 This quickly highlights unused requirements, over-constrained
 properties, and other common problems. \spear also uses \jkind for
 test case generation using the Unique First Cause criteria
@@ -186,12 +194,55 @@ to perform assume-guarantee reasoning, reachability, and viability
 analyses. The feedback from these analyses is used to refine
 the program to ensure the software functions as intended.
 
-\paragraph{Gryphon?}
+\paragraph{Gryphon.} The Gryphon framework \cite{} allows Simulink
+models to be translated to various analysis tools. This includes
+translation to \lustre for analysis by \jkind. \todo{Is there more
+interesting to say here with respect to JKind usage? Should we drop
+this paragraph?}
 
-\paragraph{Internal tool? MC/DC test gen or flight controls state
-  machines?}
+\paragraph{State Machines.} A flight control groups at Rockwell
+Collins develops state machines which manage flight modes of an
+aircraft. These state machines often have few states, but many
+possible transitions between states. There is a priority ordering to
+resolve conflicts between transitions, but this can make it hard to
+fully exercise the behavior of a state machine. The flight controls
+group has developed a particular graphical representation to manage
+this complexity.
 
-\paragraph{Model-based fuzzing?}
+We have developed a tool which formalizes these state machine models.
+It translates the state machine to \lustre and uses \jkind to check
+properties over the state machine. We use IVCs to show which
+transitions of a state machine are covered by which properties. We
+also use trap properties to generate test cases exercising
+transitions. Here IVCs are used when a trap property is true which
+means it failed to generate a test case. The IVC indicates which
+transitions are blocking the transition we wish to exercise in the
+test case. The tool presents all this information graphically to the
+flight controls group.
+
+\paragraph{MC/DC Test Case Generation.} The Engine-Indicating and
+Crew-Alerting System (EICAS) group at Rockwell Collins develops
+equations which determine which messages and alerts should be
+delivered to pilots. Certification for this system requires extensive
+test cases which must satisfy criteria such as the Modified
+Condition/Decision Coverage (MC/DC) metric. We have developed a tool
+which generates these tests by translating the EICAS equations into
+\lustre and generating MC/DC trap properties in \jkind. Smoothing is
+very important in this context as test cases need to be run on the
+actual hardware where timing is not precisely controllable. Thus, test
+cases with a minimum of changes to the inputs are ideal.
+
+\paragraph{Model-based Fuzzing.} As part of an ongoing DARPA program,
+Rockwell Collins is developing a tool for generating fuzz tests from
+system models. This tool takes a \lustre description of a system and
+uses \jkind to generate test cases which exercise different portions
+of the model. Effective fuzz testing requires a huge number of test
+cases which is not feasible to generate solely with a model checker.
+Instead, this fuzzing tool uses interval generalization in \jkind to
+generate generalized counterexamples which it then randomly samples at
+high speed. In fact, research in this area has recently expanded
+interval generalization to trapezoidal generalization which is
+strictly more general, but still allows very fast random sampling.
 
 \section{Discussion \& Related Work}
 
@@ -215,6 +266,10 @@ interface to the specification is satisfyingly capable and versatile.
 \item Uninterpreted functions
 \end{itemize}
 
+\todo{Talk about how JKind is multi-platform and how important that is.
+Basically, find a way to advocate for what other solvers should do if
+they want to be ``industrial.''}
+
 \bibliography{main}{}
 \bibliographystyle{splncs03}
 
@@ -228,4 +283,5 @@ interface to the specification is satisfyingly capable and versatile.
 % End:
 
 %  LocalWords:  BMC PDR IVC MaxSat Yices SpeAR SIMPAL Gryphon UI JVM
-%  LocalWords:  JKindApi natively PKind
+%  LocalWords:  JKindApi natively PKind IMPerative AnaLyzer IVCs
+%  LocalWords:  postconditions EICAS DARPA
