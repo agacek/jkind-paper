@@ -7,6 +7,9 @@
 \newcommand{\jkind}{{\sc JKind}\xspace}
 \newcommand{\jkindapi}{{\sc JKindApi}\xspace}
 \newcommand{\lustre}{{\sc Lustre}\xspace}
+\newcommand{\spear}{{\sc SpeAR}\xspace}
+\newcommand{\simpal}{{\sc SIMPAL}\xspace}
+\newcommand{\limp}{{\sc Limp}\xspace}
 
 \renewcommand{\paragraph}[1]{\vspace{5pt}\noindent {\bf #1}}
 
@@ -138,22 +141,47 @@ use of \jkindapi.
 \paragraph{Assume Guarantee Reasoning Environment (AGREE). } [John:
 please write a couple paragraphs about \jkind in AGREE]
 
-\paragraph{Specification and Analysis of Requirements (SpeAR).}
-The Specification and Analysis of Requirements tool, SpeAR for short, is a prototyping and analysis tool for requirements expressed in formal notations. SpeAR captures requirements in a way that is backed by the formal semantics of Lustre, which enables them to be analyzed using model checking to ensure they are correct, consistent, and realizable. 
+\paragraph{Specification and Analysis of Requirements (\spear).}
+The Specification and Analysis of Requirements tool, \spear for short,
+is a prototyping and analysis tool for requirements expressed in
+formal notations. \spear captures requirements in a way that is backed
+by the formal semantics of \lustre, which enables them to be analyzed
+using model checking to ensure they are correct, consistent, and
+realizable.
 
-SpeAR's approach to requirements capture and analysis represents a more rigorous approach than is  used in traditional requirements verification. Traditional approaches rely on manual inspections of requirements to ensure the stated behaviors are correct and free from conflict. On the other hand, SPeAR's approach relies on model checking driven analyses, powered by JKind to exhaustively analyze a set of requirements with respect to its behaviors, identifying incorrect behaviors and conflicting requirements sets automatically. The result is a more thoroughly analyzed set of requirements to hand to system designers and software developers.
+\spear uses \jkind to prove properties over requirements, and uses IVC
+to create a tracability matrix between requirements and properties.
+This quickly highlights unused requirements, over-constrained
+properties, and other common problems. \spear also uses \jkind for
+test case generation using the Unique First Cause criteria
+\cite{whalen2006issta} by creating {\em trap properties}. Each trap
+property is expected to be falsifiable, but in such a way that the
+counterexample has exactly the desired properties for a given test
+case. \spear uses smoothing in \jkind to ensure the resulting test
+cases are simple and understandable.
 
- \paragraph{SIMPAL (SIMPAL).}
-The Static IMPerative AnaLyzer (SIMPAL) is a tool for performing
+% \spear's approach to requirements capture and analysis represents a
+% more rigorous approach than is used in traditional requirements
+% verification. Traditional approaches rely on manual inspections of
+% requirements to ensure the stated behaviors are correct and free from
+% conflict. On the other hand, \spear's approach relies on model checking
+% driven analyses, powered by \jkind to exhaustively analyze a set of
+% requirements with respect to its behaviors, identifying incorrect
+% behaviors and conflicting requirements sets automatically. The result
+% is a more thoroughly analyzed set of requirements to hand to system
+% designers and software developers.
+
+\paragraph{Static IMPerative AnaLyzer (\simpal).}
+The Static IMPerative AnaLyzer (\simpal) is a tool for performing
 compositional reasoning over software programs that utilize
-preexisting software components. SIMPAL features a specification
-language, called Limp, for modeling programs that utilize preexisting
-components. Limp is a Lustre-like imperative language. It
+preexisting software components. \simpal features a specification
+language, called \limp, for modeling programs that utilize preexisting
+components. \limp is a \lustre-like imperative language. It
 provides control flow elements, global variables, and a syntax for
 specifying preconditions, postconditions, and global variable interactions
 of preexisting components.
-SIMPAL translates Limp programs to an equivalent Lustre representation
-which is passed to the JKind model checking tool
+\simpal translates \limp programs to an equivalent \lustre representation
+which is passed to the \jkind model checking tool
 to perform assume-guarantee reasoning, reachability, and viability
 analyses. The feedback from these analyses is used to refine
 the program to ensure the software functions as intended.
