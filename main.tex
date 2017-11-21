@@ -19,7 +19,22 @@
 \renewcommand{\paragraph}[1]{\vspace{5pt}\noindent {\bf #1}}
 
 \title{JKind}
-\author{Andrew Gacek, John Backes, Mike Whalen, Lucas Wagner, ???}
+\author{
+  Andrew Gacek\inst{1} \and
+  John Backes\inst{2} \and
+  Mike Whalen\inst{3} \and
+  Lucas Wagner\inst{2} \and
+  Elaheh Ghassabani\inst{3}}
+\institute{
+  Rockwell Collins \\
+%  \email{andrew.gacek@gmail.com}, \email{lucas.wagner@rockwellcollins.com}
+  \and
+  Amazon Web Services \\
+%  \email{john.backes@gmail.com}
+  \and
+  University of Minnesota
+%  \email{ghass013@umn.edu}, \email{mwwhalen@umn.edu}
+}
 
 \begin{document}
 \maketitle
@@ -146,12 +161,6 @@ graphically displaying real-time results, and nicely formatting
 counterexamples. Many of the applications in this section make heavy
 use of \jkindapi.
 
-\paragraph{Assume Guarantee Reasoning Environment (\agree). }
-
-\jkind is used as the default model checker for the Assume Guarantee Reasoning Environment (AGREE).  AGREE refers to both an embedded language annex in the Architectural Analaysis and Design Language (AADL) and a plugin to the OSATE AADL Integrated Development Environment that reasons about the annex.  The purpose of AGREE is to model behavioral requirements of an embedded system using formal assume guarantee contracts. The plugin generates Lustre programs that are checked by \jkind through the \jkindapi.
-
-AGREE makes use of multiple \jkind features including smoothing and interval generalization to present clear counterexamples, IVC to show requirements traceability, and realizability to check the well-formedness of an AADL component's contract. AGREE also uses \jkind to generate various test cases for AADL models annotated with behavioral contracts. The test case generator uses counterexamples (or lack thereof) to demonstrate requirements coverage.
-
 \paragraph{Specification and Analysis of Requirements (\spear).}
 The Specification and Analysis of Requirements tool, \spear for short,
 is a prototyping and analysis tool for requirements expressed in
@@ -181,6 +190,26 @@ cases are simple and understandable.
 % behaviors and conflicting requirements sets automatically. The result
 % is a more thoroughly analyzed set of requirements to hand to system
 % designers and software developers.
+
+\paragraph{Assume Guarantee Reasoning Environment (\agree). }
+\jkind is used as the default model checker for the Assume Guarantee
+Reasoning Environment (\agree). \agree refers to both an embedded
+language annex in the Architectural Analaysis and Design Language
+(AADL) and a plugin to the OSATE AADL Integrated Development
+Environment that reasons about the annex. The purpose of \agree is to
+model behavioral requirements of an embedded system using formal
+assume guarantee contracts. The plugin generates Lustre specifications
+that are checked by \jkind.
+
+\agree makes use of multiple \jkind features including smoothing and
+interval generalization to present clear counterexamples, IVC to show
+requirements traceability, and realizability to check the
+well-formedness of an AADL component's contract. \agree also uses
+\jkind to generate various test cases for AADL models annotated with
+behavioral contracts. The test case generator uses counterexamples (or
+lack thereof) to demonstrate requirements coverage.
+
+\todo{Where should we explain realizability? Or should we lave it out?}
 
 \paragraph{Static IMPerative AnaLyzer (\simpal).}
 The Static IMPerative AnaLyzer (\simpal) is a tool for performing
@@ -272,6 +301,8 @@ interface to the specification is satisfyingly capable and versatile.
 \todo{Talk about how JKind is multi-platform and how important that is.
 Basically, find a way to advocate for what other solvers should do if
 they want to be ``industrial.''}
+
+\section{Acknowledgments}
 
 \bibliography{main}{}
 \bibliographystyle{splncs03}
