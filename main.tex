@@ -146,8 +146,11 @@ graphically displaying real-time results, and nicely formatting
 counterexamples. Many of the applications in this section make heavy
 use of \jkindapi.
 
-\paragraph{Assume Guarantee Reasoning Environment (\agree). } [John:
-please write a couple paragraphs about \jkind in \agree]
+\paragraph{Assume Guarantee Reasoning Environment (\agree). }
+
+\jkind is used as the default model checker for the Assume Guarantee Reasoning Environment (AGREE).  AGREE refers to both an embedded language annex in the Architectural Analaysis and Design Language (AADL) and a plugin to the OSATE AADL Integrated Development Environment that reasons about the annex.  The purpose of AGREE is to model behavioral requirements of an embedded system using formal assume guarantee contracts. The plugin generates Lustre programs that are checked by \jkind through the \jkindapi.
+
+AGREE makes use of multiple \jkind features including smoothing and interval generalization to present clear counterexamples, IVC to show requirements traceability, and realizability to check the well-formedness of an AADL component's contract. AGREE also uses \jkind to generate various test cases for AADL models annotated with behavioral contracts. The test case generator uses counterexamples (or lack thereof) to demonstrate requirements coverage.
 
 \paragraph{Specification and Analysis of Requirements (\spear).}
 The Specification and Analysis of Requirements tool, \spear for short,
