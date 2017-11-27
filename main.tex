@@ -291,24 +291,40 @@ high speed. In fact, research in this area has recently expanded
 interval generalization to trapezoidal generalization which is
 strictly more general, but still allows very fast random sampling.
 
-\section{Discussion \& Related Work}
+\section{Discussion}
 
-\paragraph{Performance.} \jkind is competitive with similar solvers
-\cite{champion2016cav}. The most noticeable bottleneck of \jkind is the
-start-up time of the Java Virtual Machine (JVM). This cost is
-insignificant for most models, but causes decreased performance for
-benchmarks consisting of many very small models.
+\paragraph{Related Work}
+\jkind is one of a number of similar infinite-state inductive model
+checkers including {\sc Kind 2}, \pkind, {\sc NuXmv}, and {\sc
+  Zustre}. These tools each offer multi-engine solvers that utilize
+both k-induction and some variant of IC3/PDR. In a recent
+comparison~\cite{champion2016cav}, \jkind was the second most capable
+solver in terms of the number of problems solved (behind {\sc Kind 2})
+and had competitive performance across a large benchmark suite. The
+most noticeable bottleneck in \jkind is the start-up time for the Java
+Virtual Machine (JVM). This cost is insignificant for larger models
+but causes decreased performance for benchmarks consisting of many
+very small models.
 
-\paragraph{Simulation.} To help users and developers to understand
-\lustre specifications, \jkind can compile a \lustre specification
-into an Excel-based simulation. The simulation uses the formula and
-reference language of Excel to compute, in real-time, the output of the
-specification as inputs are entered and manipulated. This spreadsheet
-interface to the specification is satisfyingly capable and versatile.
+% \paragraph{Simulation.} To help users and developers to understand
+% \lustre specifications, \jkind can compile a \lustre specification
+% into an Excel-based simulation. The simulation uses the formula and
+% reference language of Excel to compute, in real-time, the output of the
+% specification as inputs are entered and manipulated. This spreadsheet
+% interface to the specification is satisfyingly capable and versatile.
 
-\todo{What else?}
-
-\todo{Citations for AGREE, SPeaR, and SIMPAL?}
+\paragraph{Conclusion}
+\jkind is similar to a number of other solvers that each solve
+infinite state sequential analysis problems. Nevertheless, it has some
+important features that distinguish it. First, a focus on quality of
+feedback to users for both valid properties (using IVCs) and invalid
+properties (using smoothing and counterexample generalization).
+Second, it is supported across all major platforms and is
+straightforward to port due to its implementation in Java. Third, it
+is small, modular, and well-architected, allowing straightforward
+extension with new engines. Fourth, it is open source with a liberal
+distribution license (BSD), so it can be adapted for various purposes,
+as demonstrated by the number of tools that have incorporated it.
 
 \section{Acknowledgments}
 
@@ -328,5 +344,6 @@ program under contract FA8750-12-9-0179.
 % End:
 
 %  LocalWords:  BMC PDR IVC MaxSat Yices SpeAR SIMPAL Gryphon UI JVM
-%  LocalWords:  JKindApi natively PKind IMPerative AnaLyzer IVCs
-%  LocalWords:  postconditions EICAS DARPA HACMS
+%  LocalWords:  JKindApi natively PKind IMPerative AnaLyzer IVCs IC
+%  LocalWords:  postconditions EICAS DARPA HACMS NuXmv Zustre
+%  LocalWords:  architected
