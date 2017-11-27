@@ -4,6 +4,7 @@
 \usepackage{xspace}
 \usepackage{hyperref}
 \usepackage{xcolor}
+\usepackage{graphicx}
 
 \newcommand{\jkind}{{\sc JKind}\xspace}
 \newcommand{\pkind}{{\sc PKind}\xspace}
@@ -81,13 +82,27 @@ user-facing applications that are powered by model checking.
 
 \section{Functionality and Main Features}
 
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.7]{engines.png}
+  \end{center}
+  \vspace{-2em}
+  \caption{\jkind engine architecture}
+  \vspace{-1em}
+  \label{fig:engines}
+\end{figure}
+
 \jkind is structured as several parallel engines that coordinate to
 prove properties, mimicking the design of \pkind
 \cite{kahsai2011pdmc}. Some engines are directly responsible for
 proving properties, others aid that effort by generating invariants,
 and still others are reserved for post-processing of proof or
 counterexample results. Each engine can be enabled or disabled
-separately based on the user's particular needs.
+separately based on the user's needs. The core architecture of the
+solving engines in \jkind is shown in Figure~\ref{fig:engines}.
+Although displayed as point-to-point connections, information between
+engines is actually broadcast so any engine pick the information it
+wants.
 
 The post-processing engines are greatest difference between \jkind
 and more traditional model checkers. In industrial application, the
@@ -98,8 +113,8 @@ and see which portions were exercised. This type of coverage and
 traceability information is often required for certification of safety
 critical systems.
 
-For completeness we describe each engine here, but we devote more
-space to the novel and distinguishing engines.
+% For completeness we describe each engine here, but we devote more
+% space to the novel and distinguishing engines.
 
 \paragraph{Bounded Model Checking (BMC).} The BMC engine performs a
 standard iterative unrolling of the transition relation to find
