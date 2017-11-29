@@ -101,20 +101,21 @@ counterexample results. Each engine can be enabled or disabled
 separately based on the user's needs. The core architecture of the
 solving engines in \jkind is shown in Figure~\ref{fig:engines}.
 Although displayed as point-to-point connections, information between
-engines is actually broadcast so any engine pick the information it
+engines is actually broadcast so any engine may pick the information it
 wants.
 
-The post-processing engines are greatest difference between \jkind
+The post-processing engines are the greatest difference between \jkind
 and more traditional model checkers. In industrial application, the
 {\em quality} of an answer is just as important as the answer itself.
 For example, more than knowing a property is true, we want to know
 {\em why} it is true. We want to trace the property back to the model
 and see which portions were exercised. This type of coverage and
 traceability information is often required for certification of safety
-critical systems.
+critical systems~\cite{?}.
 
 % For completeness we describe each engine here, but we devote more
 % space to the novel and distinguishing engines.
+\todo {TODO: put a section heading or description here}
 
 \paragraph{Bounded Model Checking (BMC).} The BMC engine performs a
 standard iterative unrolling of the transition relation to find
@@ -137,7 +138,7 @@ $k$-induction, each property is handled separately by a different PDR
 sub-engine. Invariants generated as a side-product of PDR are shared
 with the $k$-induction process.
 
-\paragraph{Inductive Validity Cores (IVC).} For a proven property, an
+\paragraph{Inductive Validity Cores (IVC).} For a proved property, an
 inductive validity core is a (hopefully small) subset of \lustre
 equations from the input model for which the property still holds
 \cite{ghassabani2016fse}. It indicates which portion of the model is
@@ -223,34 +224,31 @@ cases are simple and understandable.
 \jkind is used as the default model checker for the Assume Guarantee
 Reasoning Environment (\agree). \agree refers to both an embedded
 language annex in the Architectural Analysis and Design Language
-(AADL) and a plugin to the OSATE AADL Integrated Development
-Environment that reasons about the annex. The purpose of \agree is to
+(AADL) and to a plugin for the OSATE AADL Integrated Development
+Environment. The \agree annex annotates the AADL model with formal requirements, and the plugin reasons about these requirements. The purpose of \agree is to
 model behavioral requirements of an embedded system using formal
 assume guarantee contracts. The plugin generates Lustre specifications
 that are checked by \jkind.
 
 \agree makes use of multiple \jkind features including smoothing and
 interval generalization to present clear counterexamples, IVC to show
-requirements traceability, and counterexample generation to check
+requirements traceability, and counterexample generation to check the
 consistency of an AADL component's contract. \agree also uses \jkind
-to generate various test cases for AADL models annotated with
-behavioral contracts. The test case generator uses counterexamples (or
+to generate various test cases for component contracts. The test case generator uses counterexamples (or
 lack thereof) to demonstrate requirements coverage.
 
 \paragraph{Static IMPerative AnaLyzer (\simpal).}
 The Static IMPerative AnaLyzer (\simpal) is a tool for performing
-compositional reasoning over software programs that utilize
-preexisting software components. \simpal features a specification
+compositional reasoning over software. \simpal features a specification
 language, called \limp, for modeling programs that utilize preexisting
 components. \limp is a \lustre-like imperative language. It
 provides control flow elements, global variables, and a syntax for
 specifying preconditions, postconditions, and global variable interactions
 of preexisting components.
 \simpal translates \limp programs to an equivalent \lustre representation
-which is passed to the \jkind model checking tool
-to perform assume-guarantee reasoning, reachability, and viability
+which is passed to the \jkind to perform assume-guarantee reasoning, reachability, and viability
 analyses. The feedback from these analyses is used to refine
-the program to ensure the software functions as intended.
+the program to ensure that the software functions as intended.
 
 \paragraph{The \gryphon Framework.} The Rockwell Collins \gryphon
 framework \cite{miller2010cacm} translates Simulink models to various
@@ -262,7 +260,7 @@ does not specifically use any features of \jkind. Still, features like
 smoothing and IVC have been successfully used in combination with
 \gryphon to great effect.
 
-\paragraph{State Machines.} A flight control groups at Rockwell
+\paragraph{State Machines.} A flight control group at Rockwell
 Collins develops state machines which manage flight modes of an
 aircraft. These state machines often have few states, but many
 possible transitions between states. There is a priority ordering to
@@ -279,8 +277,7 @@ also use trap properties to generate test cases exercising
 transitions. Here IVCs are used when a trap property is true which
 means it failed to generate a test case. The IVC indicates which
 transitions are blocking the transition we wish to exercise in the
-test case. The tool presents all this information graphically to the
-flight controls group.
+test case. The tool presents all this information graphically to its users.
 
 \paragraph{MC/DC Test Case Generation.} The Engine-Indicating and
 Crew-Alerting System (EICAS) group at Rockwell Collins develops
