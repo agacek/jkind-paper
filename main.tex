@@ -188,11 +188,12 @@ Many of the applications in this section make heavy use of \jkindapi.
 
 \application{Specification and Analysis of Requirements}{Open Source}
 
-\noindent The Specification and Analysis of Requirements tool, \spear for short,
-is a prototyping and analysis tool for requirements expressed in
-formal notations. \spear captures requirements in a way that is backed
-by the formal semantics of \lustre, which enables them to be analyzed
-using model checking to ensure they are correct and consistent.
+\noindent The Specification and Analysis of Requirements tool, \spear
+for short, is a prototyping and analysis tool for requirements
+expressed in formal notations~\cite{fifarek2017nfm}. \spear captures
+requirements in a way that is backed by the formal semantics of
+\lustre, which enables them to be analyzed using model checking to
+ensure they are correct and consistent.
 
 \spear uses \jkind to prove properties over requirements, and uses IVC
 to create a traceability matrix between requirements and properties.
@@ -205,26 +206,15 @@ that the counterexample has exactly the desired properties for a given
 test case. \spear uses smoothing in \jkind to ensure the resulting
 test cases are simple and understandable.
 
-% \spear's approach to requirements capture and analysis represents a
-% more rigorous approach than is used in traditional requirements
-% verification. Traditional approaches rely on manual inspections of
-% requirements to ensure the stated behaviors are correct and free from
-% conflict. On the other hand, \spear's approach relies on model checking
-% driven analyses, powered by \jkind to exhaustively analyze a set of
-% requirements with respect to its behaviors, identifying incorrect
-% behaviors and conflicting requirements sets automatically. The result
-% is a more thoroughly analyzed set of requirements to hand to system
-% designers and software developers.
-
 \application{Assume Guarantee Reasoning Environment}{Open Source}
 
 \noindent \jkind is used as the default model checker for the Assume
-Guarantee Reasoning Environment (\agree). \agree refers to both an
-embedded language annex in the Architectural Analysis and Design
-Language (AADL) and to a plugin for the OSATE AADL Integrated
-Development Environment. The \agree annex annotates the AADL model
-with formal requirements, and the plugin reasons about these
-requirements. The purpose of \agree is to model behavioral
+Guarantee Reasoning Environment (\agree)~\cite{cofer2012nfm}. \agree
+refers to both an embedded language annex in the Architectural
+Analysis and Design Language (AADL) and to a plugin for the OSATE AADL
+Integrated Development Environment. The \agree annex annotates the
+AADL model with formal requirements, and the plugin reasons about
+these requirements. The purpose of \agree is to model behavioral
 requirements of an embedded system using formal assume guarantee
 contracts. The plugin generates Lustre specifications that are checked
 by \jkind.
@@ -287,16 +277,17 @@ general, but still allows very fast random sampling.
 \application{Static IMPerative AnaLyzer}{Open Source}
 
 \noindent The Static IMPerative AnaLyzer (\simpal) is a tool for
-performing compositional reasoning over software. \simpal features a
-specification language, called \limp, for modeling programs that
-utilize preexisting components. \limp is a \lustre-like imperative
-language. It provides control flow elements, global variables, and a
-syntax for specifying preconditions, postconditions, and global
-variable interactions of preexisting components. \simpal translates
-\limp programs to an equivalent \lustre representation which is passed
-to the \jkind to perform assume-guarantee reasoning, reachability, and
-viability analyses. The feedback from these analyses is used to refine
-the program to ensure that the software functions as intended.
+performing compositional reasoning over
+software~\cite{wagner2017spin}. \simpal features a specification
+language, called \limp, for modeling programs that utilize preexisting
+components. \limp is a \lustre-like imperative language. It provides
+control flow elements, global variables, and a syntax for specifying
+preconditions, postconditions, and global variable interactions of
+preexisting components. \simpal translates \limp programs to an
+equivalent \lustre representation which is passed to the \jkind to
+perform assume-guarantee reasoning, reachability, and viability
+analyses. The feedback from these analyses is used to refine the
+program to ensure that the software functions as intended.
 
 % \paragraph{The \gryphon Framework.} The Rockwell Collins \gryphon
 % framework~\cite{miller2010cacm} translates Simulink models to various
@@ -343,9 +334,9 @@ extension with new engines. Fourth, it is open source with a liberal
 distribution license (BSD), so it can be adapted for various purposes,
 as demonstrated by the number of tools that have incorporated it.
 
-\section{Acknowledgments}
+\paragraph{Acknowledgments}
 
-The work presented here was sponsored by DARPA as part of the HACMS
+\noindent The work presented here was sponsored by DARPA as part of the HACMS
 program under contract FA8750-12-9-0179.
 
 \bibliography{main}{}
