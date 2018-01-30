@@ -113,7 +113,7 @@ possible) to hold all inputs constant while still falsifying the
 original property. This engine is only available with SMT-solvers that
 support {\sc MaxSat} such as Yices and Z3.
 
-\paragraph{Advice.} The advice engine saves and re-uses the invariants that were used by \jkind to prove the properties of a model.  Prior to analysis, \jkind\ performs model slicing and flattening to generate a flat transition-relation model.  Internally, invariants are stored as a set of proven formulas (in the LUSTRE syntax) over the variables in the flattened model.  An {\em advice} file is simply the emitted set of these invariant formulas.  When a model is loaded, the formulas are loaded into memory; formulas that are no longer syntactically or type correct are discarded, and the remaining set of formulas are submitted as an initial set of invariants to the invariant generation engine.  In this engine they are treated as any other posited but unknown invariant: if they are proved, they are passed along to other engines; if falsified, they are discarded.
+\paragraph{Advice.} The advice engine saves and re-uses the invariants that were used by \jkind to prove the properties of a model.  Prior to analysis, \jkind\ performs model slicing and flattening to generate a flat transition-relation model.  Internally, invariants are stored as a set of proven formulas (in the \lustre syntax) over the variables in the flattened model.  An {\em advice} file is simply the emitted set of these invariant formulas.  When a model is loaded, the formulas are loaded into memory; formulas that are no longer syntactically or type correct are discarded, and the remaining set of formulas are submitted as an initial set of possible invariants to be proved via $k$-induction: if they are proved, they are passed along to other engines; if falsified, they are discarded.
 %
 Names constructed between multiple runs of \jkind\ are stable, so if a model is unchanged, it can be trivially re-proved using the invariants and k-induction with $k=1$.  In the case that a model is a small delta of a previously-proved model, it is often the case that most of the invariants can be re-proved, leading to reduced verification times.
 
@@ -122,7 +122,7 @@ Names constructed between multiple runs of \jkind\ are stable, so if a model is 
 
 \section{Integration \& Applications}
 
-\mike{Should we talk less (and less repetitively) about each table and use a chart that describes the jkind features used for each tool?}
+%\mike{Should we talk less (and less repetitively) about each table and use a chart that describes the jkind features used for each tool?}
 
 \jkind is the back-end for a variety of user-facing applications. In this section, we briefly highlight a few and how they employ the features discussed previously.
 %
@@ -173,27 +173,35 @@ requirements traceability, and counterexample generation to check the
 consistency of an AADL component's contract. \agree also uses \jkind
 for test-case generation from component contracts.
 
-\application{Flight Control Logic}{Proprietary}
+%\application{Static IMPerative AnaLyzer}{Open Source}
+(3) The {\em Static IMPerative AnaLyzer} (\simpal) is a tool for
+performing compositional reasoning over
+software~\cite{wagner2017spin}. \simpal is based on \limp, a \lustre-like imperative language with extensions for control flow elements, global variables, and a syntax for specifying preconditions, postconditions, and global variable interactions of
+preexisting components. \simpal translates \limp programs to an
+equivalent \lustre representation which is passed to the \jkind to
+perform assume-guarantee reasoning, reachability, and viability
+analyses. %The feedback from these analyses is used to refine the
+%program to ensure that the software functions as intended.
 
-\noindent A flight control group at Rockwell Collins develops state
-machines which manage flight modes of an aircraft. These state
-machines often have few states, but many possible transitions between
-states. There is a priority ordering to resolve conflicts between
-transitions, but this can make it hard to fully exercise the behavior
-of a state machine. The flight controls group has developed a
-particular graphical representation to manage this complexity.
-
-We have developed a tool which formalizes these state machine models.
-It translates the state machine to \lustre and uses \jkind to check
-properties over the state machine. We use IVCs to establish
-traceability, i.e. which transitions are covered by which properties.
-We also use trap properties to generate test cases exercising
-transitions. Here IVCs are used when a trap property is true which
-means it failed to generate a test case. The IVC indicates which
-transitions are blocking the transition we wish to exercise in the
-test case. The tool presents all this information graphically to its
-users.
-
+\jkind is also used by two proprietary tools used by product areas within Rockwell Collins.  The first is a {\em Mode Transition Table} verification tool used for the complex state machines which manage flight modes of an aircraft.
+\jkind is used to check properties and generate tests for mode and transition coverage from \lustre models generated from the state machines.
+IVCs are used to establish traceability, i.e. which transitions are covered by which properties.  The second is a {\em Crew Alerting System} MC/DC test-case generation tool for a proprietary DSL used for messages and alerts to airplane pilots.  Smoothing is very important in this context as test cases need to be run on the actual hardware where
+timing is not precisely controllable. Thus, test cases with a minimum
+of changes to the inputs are ideal.
+%
+%These state
+%machines often have few states, but hundreds of possible transitions between
+%states. There is a priority ordering to resolve conflicts between
+%transitions, but this can make it hard to fully exercise the behavior
+%of a state machine. The flight controls group has developed a
+%particular graphical representation to manage this complexity.
+%
+%We have developed a tool which formalizes these state machine models.
+%Trap properties are used to generate test cases exercising all transitions. Here IVCs are used when a trap property is {\em valid}, which means it failed to generate a test case. The IVC indicates which
+%transitions are blocking the transition we wish to exercise in the
+%test case. The tool presents all this information graphically to its
+%users.
+\iffalse
 \application{MC/DC Test Case Generation}{Proprietary}
 
 \noindent An engineering group at Rockwell Collins develops equations
@@ -220,21 +228,7 @@ generalized counterexamples which it then randomly samples at high
 speed. In fact, research in this area has recently expanded interval
 generalization to trapezoidal generalization which is strictly more
 general, but still allows very fast random sampling.
-
-\application{Static IMPerative AnaLyzer}{Open Source}
-
-\noindent The Static IMPerative AnaLyzer (\simpal) is a tool for
-performing compositional reasoning over
-software~\cite{wagner2017spin}. \simpal features a specification
-language, called \limp, for modeling programs that utilize preexisting
-components. \limp is a \lustre-like imperative language. It provides
-control flow elements, global variables, and a syntax for specifying
-preconditions, postconditions, and global variable interactions of
-preexisting components. \simpal translates \limp programs to an
-equivalent \lustre representation which is passed to the \jkind to
-perform assume-guarantee reasoning, reachability, and viability
-analyses. The feedback from these analyses is used to refine the
-program to ensure that the software functions as intended.
+\fi
 
 % \paragraph{The \gryphon Framework.} The Rockwell Collins \gryphon
 % framework~\cite{miller2010cacm} translates Simulink models to various
