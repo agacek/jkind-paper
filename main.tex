@@ -15,6 +15,8 @@
 \newcommand{\limp}{{\sc Limp}\xspace}
 \newcommand{\agree}{{\sc AGREE}\xspace}
 \newcommand{\gryphon}{{\sc Gryphon}\xspace}
+\newcommand{\nuxmv}{{\sc nuXmv}\xspace}
+\newcommand{\zustre}{{\sc Zustre}\xspace}
 
 \newcommand{\todo}[1]{{\color{red} #1}}
 
@@ -125,6 +127,27 @@ Names constructed between multiple runs of \jkind\ are stable, so if a model is 
 
 \section{Benchmarking}
 [CREATE THIS SECTION]
+
+Performance benchmarks for \jkind and related solvers are shown in
+Figure~\ref{fig:benchmark}. These benchmarks are mix of true and false
+properties over the theory of linear integer arithmetic. There are 688
+benchmarks taken from \cite{cimatti2014tacas}\footnote{We removed 263
+  duplicate benchmarks from the original set}.  \jkind, \nuxmv, and
+\zustre were able to verify or falsify every property, with \nuxmv as
+the fastest. We note that many benchmarks in this set are very small,
+and startup time (which is relatively long for \jkind due to the JVM)
+dominates for small models.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=\textwidth]{graph.png}
+  \end{center}
+  \vspace{-2em}
+  \caption{Performance benchmarks}
+  \vspace{-1em}
+  \label{fig:benchmark}
+\end{figure}
+
 
 \section{Integration \& Applications}
 
@@ -249,17 +272,20 @@ of changes to the inputs are ideal.
 
 \paragraph{Related Work}
 \jkind is one of a number of similar infinite-state inductive model
-checkers including {\sc Kind 2}, \kind, {\sc NuXmv}, and {\sc
-  Zustre}. These tools each offer multi-engine solvers that utilize
-both k-induction and some variant of IC3/PDR. In a recent
+checkers including {\sc Kind 2}, \kind, \nuxmv, and \zustre. These
+tools each offer multi-engine solvers that utilize both k-induction
+and some variant of IC3/PDR. In a recent
 comparison~\cite{champion2016cav}, \jkind was the second most capable
 solver in terms of the number of problems solved (behind {\sc Kind 2})
 and had competitive performance across a large benchmark suite. The
 most noticeable bottleneck in \jkind is the start-up time for the Java
 Virtual Machine (JVM). This cost is insignificant for larger models
 but causes decreased performance for benchmarks consisting of many
-very small models. 
-There are also other tools such as {\sc ESBMC-DepthK} \cite{rocha2017model},  {\sc VVT} \cite{beyer2016smt} {\sc CPAchecker}, \cite{beyer2015boosting}, {\sc CPROVER} \cite{brain2015safety} attempting to prove C programs using similar techniques ($k$-induction, invariant generation, and PDR).
+very small models.  There are also other tools such as {\sc
+  ESBMC-DepthK} \cite{rocha2017model}, {\sc VVT} \cite{beyer2016smt}
+{\sc CPAchecker}, \cite{beyer2015boosting}, {\sc CPROVER}
+\cite{brain2015safety} attempting to prove C programs using similar
+techniques ($k$-induction, invariant generation, and PDR).
 
 % \paragraph{Simulation.} To help users and developers to understand
 % \lustre specifications, \jkind can compile a \lustre specification
