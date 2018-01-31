@@ -253,7 +253,8 @@ and had competitive performance across a large benchmark suite. The
 most noticeable bottleneck in \jkind is the start-up time for the Java
 Virtual Machine (JVM). This cost is insignificant for larger models
 but causes decreased performance for benchmarks consisting of many
-very small models.
+very small models. 
+There are also other tools such as {\sc ESBMC-DepthK} \cite{rocha2017model},  {\sc VVT} \cite{beyer2016smt} {\sc CPAchecker}, \cite{beyer2015boosting}, {\sc CPROVER} \cite{brain2015safety} attempting to prove C programs using similar techniques ($k$-induction, invariant generation, and PDR).
 
 % \paragraph{Simulation.} To help users and developers to understand
 % \lustre specifications, \jkind can compile a \lustre specification
