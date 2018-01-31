@@ -103,8 +103,8 @@ post-processing results for presentation and repeated verification of models und
 %and supporting re-verification of slightly-modified models.  Simplifying counterexamples to support root-cause analysis and providing traceability information to automatically create traceability matrices and determine adequacy of requirements has been important in the industrial use of the tools.  Additionally, this type of coverage and traceability information is often required for certification of safety critical systems~\cite{DO178C}.  To support these uses,
 
 \paragraph{Inductive Validity Cores (IVC).} For a proven property, an inductive validity core is a subset of \lustre equations from the input model for which the property still
-holds~\cite{ghassabani2016fse}.  Inductive validity cores can be used for traceability from property to model elements and determining coverage of the model by a set of properties~\cite{Ghass17Cov}.  This facility can be used to automatically generate traceability and adequacy information (such as traceability matrices~\cite{fifarek2017nfm} important to the certification of safety-critical avionics systems~\cite{DO178C}.
-The IVC engine uses a heuristic algorithm to efficiently produce minimal or nearly minimal cores. As a side-effect, the IVC algorithm also minimizes the set of invariants used to prove a property and emits this reduced set to other engines.
+holds~\cite{ghassabani2016fse,Ghass17AllIVCs}.  Inductive validity cores can be used for traceability from property to model elements and determining coverage of the model by a set of properties~\cite{Ghass17Cov}.  This facility can be used to automatically generate traceability and adequacy information (such as traceability matrices~\cite{fifarek2017nfm} important to the certification of safety-critical avionics systems~\cite{DO178C}.
+The IVC engine uses a heuristic algorithm to efficiently produce minimal or nearly minimal cores. As a side-effect, the IVC algorithm also minimizes the set of invariants used to prove a property and emits this reduced set to other engines (notably the {\em Advice} engine, described below).
 
 \paragraph{Smoothing.}  To aid in counterexample understanding and in
 creating structural coverage tests that can be more easily explained,
@@ -129,18 +129,20 @@ invariants and k-induction.  If the model is slightly changed, it is
 often the case that most of the invariants can be re-proved, leading
 to reduced verification times.
 
-\section{Benchmarking}
-[CREATE THIS SECTION]
-
-Performance benchmarks for \jkind and related solvers are shown in
-Figure~\ref{fig:benchmark}. These benchmarks are mix of true and false
+\section{Experimental Evaluation}
+We evaluated the performance of \jkind against \nuxmv~\cite{cimatti2014tacas}, \zustre~\cite{Zustre}, Generalized PDR in Z3~\cite{GPDR} and \kind2~\cite{champion2016cav}.  the benchmarks from Lustre programs used in~\cite{cimatti2014tacas}.  These benchmarks are mix of true and false
 properties over the theory of linear integer arithmetic. There are 688
-benchmarks taken from \cite{cimatti2014tacas}\footnote{We removed 263
-  duplicate benchmarks from the original set}.  \jkind, \nuxmv, and
+benchmarks taken from \cite{cimatti2014tacas}\footnote{Available at:  https://es.fbk.eu/people/griggio/papers/
+tacas14-ic3ia.tar.bz2.  Note that we removed 263 duplicate benchmarks from the original set.}.
+All the experiments have been performed on a 64-bit Ubuntu 17.10 linux machine with
+a 12-core Intel Xeon CPU E5-1650 v3 @ 3.50GHz, with 32Gb of RAM and a time limit of
+60 seconds per problem.
+
+Performance for \jkind and related solvers are shown in
+Figure~\ref{fig:benchmark}. The key describes the number of benchmarks solved for each tool, and the graph shows the aggregate time required for solving, ordered by time required per-problem, ordered independently for each tool.  \jkind, \nuxmv, and
 \zustre were able to verify or falsify every property, with \nuxmv as
-the fastest. We note that many benchmarks in this set are very small,
-and startup time (which is relatively long for \jkind due to the JVM)
-dominates for small models.
+the fastest tool.  We note that many of the benchmarks in this set are quickly evaluated: z3 solves the first 400 benchmarks in 10 seconds.  Due to \jkind's use of Java and multiple threads, the JVM/\jkind startup time for an empty model is approximately 0.5s, which leads to poor performance on small models.  For the solvers completing all benchmarks, \jkind underperforms \nuxmv (which completes all problems in 618s) and very slightly outperforms \zustre (864s vs. 867s).  As always, benchmarks should be taken with a large grain of salt.  In~\cite{champion2016cav}, a different set of benchmarks favored \kind2.  We believe that all the solvers are relatively competitive.
+
 
 \begin{figure}
   \begin{center}
@@ -276,7 +278,7 @@ of changes to the inputs are ideal.
 
 \paragraph{Related Work}
 \jkind is one of a number of similar infinite-state inductive model
-checkers including {\sc Kind 2}, \kind, \nuxmv, and \zustre. These
+checkers including {\sc Kind 2}, \kind, \nuxmv{, and \zustre{Zustre}. These
 tools each offer some variant of IC3/PDR and many support k-induction
 as well.  There are also other tools such as {\sc ESBMC-DepthK}
 \cite{rocha2017model}, {\sc VVT} \cite{beyer2016smt} {\sc CPAchecker},
