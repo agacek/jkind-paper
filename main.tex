@@ -173,11 +173,11 @@ Names constructed between multiple runs of \jkind\ are stable, so if a model is 
 %contracts. The plugin generates Lustre specifications that are checked
 %by \jkind.
 %
-\agree makes use of multiple \jkind features including smoothing and
-interval generalization to present clear counterexamples, IVC to show
-requirements traceability, and counterexample generation to check the
-consistency of an AADL component's contract. \agree also uses \jkind
-for test-case generation from component contracts.
+\agree makes use of multiple \jkind features including smoothing to
+present clear counterexamples, IVC to show requirements traceability,
+and counterexample generation to check the consistency of an AADL
+component's contract. \agree also uses \jkind for test-case generation
+from component contracts.
 
 %\application{Static IMPerative AnaLyzer}{Open Source}
 (3) The {\em Static IMPerative AnaLyzer} (\simpal) is a tool for
@@ -207,34 +207,33 @@ of changes to the inputs are ideal.
 %transitions are blocking the transition we wish to exercise in the
 %test case. The tool presents all this information graphically to its
 %users.
-\iffalse
-\application{MC/DC Test Case Generation}{Proprietary}
 
-\noindent An engineering group at Rockwell Collins develops equations
-which determine which messages and alerts should be delivered to
-pilots. Certification for this system requires extensive test cases
-which must satisfy criteria such as the Modified Condition/Decision
-Coverage (MC/DC) metric. We have developed a tool which generates
-these tests by translating the equations into \lustre and generating
-MC/DC trap properties in \jkind. Smoothing is very important in this
-context as test cases need to be run on the actual hardware where
-timing is not precisely controllable. Thus, test cases with a minimum
-of changes to the inputs are ideal.
+% \application{MC/DC Test Case Generation}{Proprietary}
 
-\application{Model-based Fuzzing}{Open Source}
+% \noindent An engineering group at Rockwell Collins develops equations
+% which determine which messages and alerts should be delivered to
+% pilots. Certification for this system requires extensive test cases
+% which must satisfy criteria such as the Modified Condition/Decision
+% Coverage (MC/DC) metric. We have developed a tool which generates
+% these tests by translating the equations into \lustre and generating
+% MC/DC trap properties in \jkind. Smoothing is very important in this
+% context as test cases need to be run on the actual hardware where
+% timing is not precisely controllable. Thus, test cases with a minimum
+% of changes to the inputs are ideal.
 
-\noindent As part of an ongoing DARPA program, Rockwell Collins is
-developing a tool for generating fuzz tests from system models. This
-tool takes a \lustre description of a system and uses \jkind to
-generate test cases which exercise different portions of the model.
-Effective fuzz testing requires a huge number of test cases which is
-not feasible to generate solely with a model checker. Instead, this
-fuzzing tool uses interval generalization in \jkind to generate
-generalized counterexamples which it then randomly samples at high
-speed. In fact, research in this area has recently expanded interval
-generalization to trapezoidal generalization which is strictly more
-general, but still allows very fast random sampling.
-\fi
+% \application{Model-based Fuzzing}{Open Source}
+
+% \noindent As part of an ongoing DARPA program, Rockwell Collins is
+% developing a tool for generating fuzz tests from system models. This
+% tool takes a \lustre description of a system and uses \jkind to
+% generate test cases which exercise different portions of the model.
+% Effective fuzz testing requires a huge number of test cases which is
+% not feasible to generate solely with a model checker. Instead, this
+% fuzzing tool uses interval generalization in \jkind to generate
+% generalized counterexamples which it then randomly samples at high
+% speed. In fact, research in this area has recently expanded interval
+% generalization to trapezoidal generalization which is strictly more
+% general, but still allows very fast random sampling.
 
 % \paragraph{The \gryphon Framework.} The Rockwell Collins \gryphon
 % framework~\cite{miller2010cacm} translates Simulink models to various
