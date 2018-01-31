@@ -277,19 +277,12 @@ of changes to the inputs are ideal.
 \paragraph{Related Work}
 \jkind is one of a number of similar infinite-state inductive model
 checkers including {\sc Kind 2}, \kind, \nuxmv, and \zustre. These
-tools each offer multi-engine solvers that utilize both k-induction
-and some variant of IC3/PDR. In a recent
-comparison~\cite{champion2016cav}, \jkind was the second most capable
-solver in terms of the number of problems solved (behind {\sc Kind 2})
-and had competitive performance across a large benchmark suite. The
-most noticeable bottleneck in \jkind is the start-up time for the Java
-Virtual Machine (JVM). This cost is insignificant for larger models
-but causes decreased performance for benchmarks consisting of many
-very small models.  There are also other tools such as {\sc
-  ESBMC-DepthK} \cite{rocha2017model}, {\sc VVT} \cite{beyer2016smt}
-{\sc CPAchecker}, \cite{beyer2015boosting}, {\sc CPROVER}
-\cite{brain2015safety} attempting to prove C programs using similar
-techniques ($k$-induction, invariant generation, and PDR).
+tools each offer some variant of IC3/PDR and many support k-induction
+as well.  There are also other tools such as {\sc ESBMC-DepthK}
+\cite{rocha2017model}, {\sc VVT} \cite{beyer2016smt} {\sc CPAchecker},
+\cite{beyer2015boosting}, {\sc CPROVER} \cite{brain2015safety}
+attempting to prove C programs using similar techniques
+($k$-induction, invariant generation, and PDR).
 
 % \paragraph{Simulation.} To help users and developers to understand
 % \lustre specifications, \jkind can compile a \lustre specification
