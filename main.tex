@@ -104,12 +104,18 @@ post-processing results for presentation and repeated verification of models und
 holds~\cite{ghassabani2016fse}.  Inductive validity cores can be used for traceability from property to model elements and determining coverage of the model by a set of properties~\cite{Ghass17Cov}.  This facility can be used to automatically generate traceability and adequacy information (such as traceability matrices~\cite{fifarek2017nfm} important to the certification of safety-critical avionics systems~\cite{DO178C}.
 The IVC engine uses a heuristic algorithm to efficiently produce minimal or nearly minimal cores. As a side-effect, the IVC algorithm also minimizes the set of invariants used to prove a property and emits this reduced set to other engines.
 
-\paragraph{Smoothing.}  To aid in counterexample understanding and in creating structural coverage tests that can be more easily explained, \jkind\ provides an optional post-processing step to minimize the number of changes to input variables, {\em smoothing} the counterexample.  \mike{Andrew: can you add a little more depth to this explanation?}
-The smoothing engine uses a {\sc MaxSat} query over
-the original BMC-style unrolling of the transition relation combined
-with weighted assertions that each input variable does not change on
-each step. The {\sc MaxSat} query therefore tries (as best as
-possible) to hold all inputs constant while still falsifying the
+\paragraph{Smoothing.}  To aid in counterexample understanding and in
+creating structural coverage tests that can be more easily explained,
+\jkind provides an optional post-processing step to minimize the
+number of changes to input variables---{\em smoothing} the
+counterexample.  For example, applied to 129 test cases generated for
+a production avoinics flight control state machine, smoothing
+increased runtime by 40\% and removed 4 unnecessary input changes per
+test case on average.  The smoothing engine uses a {\sc MaxSat} query
+over the original BMC-style unrolling of the transition relation
+combined with weighted assertions that each input variable does not
+change on each step. The {\sc MaxSat} query therefore tries (as best
+as possible) to hold all inputs constant while still falsifying the
 original property. This engine is only available with SMT-solvers that
 support {\sc MaxSat} such as Yices and Z3.
 
