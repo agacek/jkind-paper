@@ -123,7 +123,11 @@ support {\sc MaxSat} such as Yices and Z3.
 
 \paragraph{Advice.} The advice engine saves and re-uses the invariants that were used by \jkind to prove the properties of a model.  Prior to analysis, \jkind\ performs model slicing and flattening to generate a flat transition-relation model.  Internally, invariants are stored as a set of proven formulas (in the \lustre syntax) over the variables in the flattened model.  An {\em advice} file is simply the emitted set of these invariant formulas.  When a model is loaded, the formulas are loaded into memory; formulas that are no longer syntactically or type correct are discarded, and the remaining set of formulas are submitted as an initial set of possible invariants to be proved via $k$-induction: if they are proved, they are passed along to other engines; if falsified, they are discarded.
 %
-Names constructed between multiple runs of \jkind\ are stable, so if a model is unchanged, it can be trivially re-proved using the invariants and k-induction with $k=1$.  In the case that a model is a small delta of a previously-proved model, it is often the case that most of the invariants can be re-proved, leading to reduced verification times.
+Names constructed between multiple runs of \jkind are stable, so if a
+model is unchanged, it can be usually be re-proved quickly using the
+invariants and k-induction.  If the model is slightly changed, it is
+often the case that most of the invariants can be re-proved, leading
+to reduced verification times.
 
 \section{Benchmarking}
 [CREATE THIS SECTION]
