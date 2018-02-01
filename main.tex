@@ -54,9 +54,9 @@
 \maketitle
 
 \begin{abstract}
-  \jkind is an open-source industrial model checker 
+  \jkind is an open-source industrial model checker
   %developed by
-  %Rockwell Collins and the University of Minnesota. 
+  %Rockwell Collins and the University of Minnesota.
   \jkind uses
   multiple parallel engines to prove or falsify safety properties of
   infinite state models. It is portable, easy to install, performance competitive with other state-of-the-art model checkers, and has features designed to improve the results presented to users: {\em inductive validity cores} for proofs and {\em counterexample smoothing} for test-case generation.  It serves as the back-end for
@@ -112,7 +112,7 @@ post-processing results for presentation and repeated verification of models und
 holds~\cite{ghassabani2016fse,Ghass17AllIVCs}.  Inductive validity cores can be used for traceability from property to model elements and determining coverage of the model by a set of properties~\cite{Ghass17Cov}.  This facility can be used to automatically generate traceability and adequacy information (such as traceability matrices~\cite{fifarek2017nfm} important to the certification of safety-critical avionics systems~\cite{DO178C}).
 The IVC engine uses a heuristic algorithm to efficiently produce minimal or nearly minimal cores.   In a recent experiment over a superset of the benchmark models described in the experiment in Section~\ref{sec:experiment}, we found that our heuristic IVC computation added 31\% overhead to model checking time, and yielded cores approximately 8\% larger than the guaranteed minimal core computed by a very expensive ``brute force'' algorithm.  As a side-effect, the IVC algorithm also minimizes the set of invariants used to prove a property and emits this reduced set to other engines (notably the {\em Advice} engine, described below).
 
-%Since \lustre is 
+%Since \lustre is
 
 \paragraph{Smoothing.}  To aid in counterexample understanding and in
 creating structural coverage tests that can be more easily explained,
@@ -162,14 +162,13 @@ for solving, ordered by time required per-problem, ordered
 independently for each tool. \jkind was able to verify or falsify the
 most properties, although \zthree was often the fastest tool.  We note
 that many of the benchmarks in this set are quickly evaluated: \zthree
-solves the first 400 benchmarks in 10 seconds.  Due to \jkind's use of
+solves the first 400 benchmarks in just over 12 seconds.  Due to \jkind's use of
 Java and multiple threads, the JVM/\jkind startup time for an empty
 model is approximately 0.35s, which leads to poor performance on small
 models\footnote{Without startup time, the curve for \jkind is close to
-  the curve for \zustre}.  As always, benchmarks should be taken with
+  the curve for \zustre}.  As always, such benchmarks should be taken with
 a large grain of salt.  In~\cite{champion2016cav}, a different set of
-benchmarks favored \kind2.  We believe that all the solvers are
-relatively competitive.
+benchmarks slightly favored \kind2, and in~\cite{cimatti2014tacas}, \nuxmv was the most capable tool.  We believe that all the solvers are relatively competitive.
 
 
 \begin{figure}
@@ -243,7 +242,7 @@ software~\cite{wagner2017spin}. \simpal is based on \limp, a \lustre-like impera
 preexisting components. \simpal translates \limp programs to an
 equivalent \lustre representation which is passed to \jkind to
 perform assume-guarantee reasoning, reachability, and viability
-analyses. 
+analyses.
 %The feedback from these analyses is used to refine the
 %program to ensure that the software functions as intended.
 
