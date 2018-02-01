@@ -145,10 +145,11 @@ If the IVC engine is also enabled, then advice emits a (close to) minimal set of
 \label{sec:experiment}
 We evaluated the performance of \jkind against \kind
 2~\cite{champion2016cav}, \zustre~\cite{Zustre}, Generalized PDR in
-\zthree~\cite{GPDR}, and IC3 in \nuxmv~\cite{cimatti2014tacas}, Our
-benchmark suite comes from~\cite{cimatti2014tacas} and contains 688
-models over the theory of linear integer arithmetic\footnote{Available
-  at:
+\zthree~\cite{GPDR}, and IC3 in \nuxmv~\cite{cimatti2014tacas}. We
+used the default options for each tool (using {\tt check\_invar\_ic3}
+for \nuxmv).  Our benchmark suite comes from~\cite{cimatti2014tacas}
+and contains 688 models over the theory of linear integer
+arithmetic\footnote{Available at:
   \url{https://es.fbk.eu/people/griggio/papers/tacas14-ic3ia.tar.bz2}.
   Note that we removed 263 duplicate benchmarks from the original
   set.}.  All the experiments have been performed on a 64-bit Ubuntu
