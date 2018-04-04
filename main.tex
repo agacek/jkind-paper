@@ -32,42 +32,40 @@
 \newcommand{\mike}[1]{\textcolor{red}{#1}}
 
 \title{The JKind Model Checker}
-\author{ Authors anonymized for submission to CAV 2018
-%  Andrew Gacek\inst{1} \and
-%  John Backes\inst{1} \and
-%  Mike Whalen\inst{2} \and
-%  Lucas Wagner\inst{1} \and
-%  Elaheh Ghassabani\inst{2}
-  }
-\institute{ Institute anonymized for submission to CAV 2018
-%  Rockwell Collins \\
-%  \email{andrew.gacek@gmail.com}, \email{lucas.wagner@rockwellcollins.com}
-%  \and
-%  Amazon Web Services \\
-%  \email{john.backes@gmail.com}
-%  \and
-%  University of Minnesota
-%  \email{ghass013@umn.edu}, \email{mwwhalen@umn.edu}
+\author{
+  Andrew Gacek\inst{1} \and
+  John Backes\inst{1} \and
+  Mike Whalen\inst{2} \and
+  Lucas Wagner\inst{1} \and
+  Elaheh Ghassabani\inst{2}
+}
+\institute{
+  Rockwell Collins \\
+  \email{andrew.gacek@gmail.com}, \email{john.backes@gmail.com}, \email{lucas.wagner@rockwellcollins.com}
+  \and
+  University of Minnesota \\
+  \email{ghass013@umn.edu}, \email{mwwhalen@umn.edu}
 }
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-  \jkind is an open-source industrial model checker
-  %developed by
-  %Rockwell Collins and the University of Minnesota.
-  \jkind uses
-  multiple parallel engines to prove or falsify safety properties of
-  infinite state models. It is portable, easy to install, performance competitive with other state-of-the-art model checkers, and has features designed to improve the results presented to users: {\em inductive validity cores} for proofs and {\em counterexample smoothing} for test-case generation.  It serves as the back-end for
-  various industrial applications.
+\jkind is an open-source industrial model checker developed by
+Rockwell Collins and the University of Minnesota.  \jkind uses
+multiple parallel engines to prove or falsify safety properties of
+infinite state models. It is portable, easy to install, performance
+competitive with other state-of-the-art model checkers, and has
+features designed to improve the results presented to users: {\em
+  inductive validity cores} for proofs and {\em counterexample
+  smoothing} for test-case generation.  It serves as the back-end for
+various industrial applications.
 \end{abstract}
 
 \section{Introduction}
 
 \jkind is an
-open-source\footnote{Site information for download anonymized for submission to CAV 2018 - tool is available in artifact submission %\url{https://github.com/agacek/jkind}
-} industrial
+open-source\footnote{\url{https://github.com/agacek/jkind}} industrial
 infinite-state inductive model checker for safety properties. Models
 and properties in \jkind are specified in
 \lustre~\cite{halbwachs1991ieee}, a synchronous data-flow language,
@@ -247,7 +245,7 @@ analyses.
 %The feedback from these analyses is used to refine the
 %program to ensure that the software functions as intended.
 
-\jkind is also used by two proprietary tools used by product areas within a company\footnote{Organization anonymized for submission}.  The first is a {\em Mode Transition Table} verification tool used for the complex state machines which manage flight modes of an aircraft.
+\jkind is also used by two proprietary tools used by product areas within Rockwell Collins.  The first is a {\em Mode Transition Table} verification tool used for the complex state machines which manage flight modes of an aircraft.
 \jkind is used to check properties and generate tests for mode and transition coverage from \lustre models generated from the state machines.
 IVCs are used to establish traceability, i.e. which transitions are covered by which properties.  The second is a {\em Crew Alerting System} MC/DC test-case generation tool for a proprietary DSL used for messages and alerts to airplane pilots.  Smoothing is very important in this context as test cases need to be run on the actual hardware where
 timing is not precisely controllable. Thus, test cases with a minimum
@@ -347,10 +345,8 @@ as demonstrated by the number of tools that have incorporated it.
 
 \paragraph{Acknowledgments}
 
-Acknowledgements anonymized for submission to CAV 2018.
-
-%\noindent The work presented here was sponsored by DARPA as part of the HACMS
-%program under contract FA8750-12-9-0179.
+\noindent The work presented here was sponsored by DARPA as part of the HACMS
+program under contract FA8750-12-9-0179.
 
 \bibliography{main}{}
 \bibliographystyle{splncs03}
@@ -366,7 +362,7 @@ Acknowledgements anonymized for submission to CAV 2018.
 
 %  LocalWords:  BMC PDR IVC MaxSat Yices SpeAR SIMPAL Gryphon UI JVM
 %  LocalWords:  JKindApi natively Kind IMPerative AnaLyzer IVCs IC GB
-%  LocalWords:  postconditions DARPA HACMS NuXmv Zustre anonymized VC
+%  LocalWords:  postconditions DARPA HACMS NuXmv Zustre VC
 %  LocalWords:  architected CAV benchmarking superset Xeon DSL SMV
 %  LocalWords:  ESBMC DepthK VVT CPAchecker CPROVER Synopsys
 %  LocalWords:  Acknowledgements
