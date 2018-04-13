@@ -31,7 +31,7 @@
 
 \newcommand{\mike}[1]{\textcolor{red}{#1}}
 
-\title{The JKind Model Checker}
+\title{The \jkind Model Checker}
 \author{
   Andrew Gacek\inst{1} \and
   John Backes\inst{1} \and
@@ -80,7 +80,7 @@ Another important characteristic of \jkind is that is it designed to be integrat
 
 \section{Functionality and Main Features}
 
-\begin{figure}
+\begin{figure}[t]
   \begin{center}
     \includegraphics[clip,trim=140 220 80 140,scale=0.6]{engines.png}
   \end{center}
@@ -164,30 +164,31 @@ We evaluated the performance of \jkind against \kind
 used the default options for each tool (using {\tt check\_invar\_ic3}
 for \nuxmv).  Our benchmark suite comes from~\cite{cimatti2014tacas}
 and contains 688 models over the theory of linear integer
-arithmetic\footnote{Available at:
-  \url{https://es.fbk.eu/people/griggio/papers/tacas14-ic3ia.tar.bz2}.
+arithmetic\footnote{\url{https://es.fbk.eu/people/griggio/papers/tacas14-ic3ia.tar.bz2}.
   Note that we removed 263 duplicate benchmarks from the original
-  set.}.  All the experiments have been performed on a 64-bit Ubuntu
+  set.}.  All experiments were performed on a 64-bit Ubuntu
 17.10 Linux machine with a 12-core Intel Xeon CPU E5-1650 v3 @
 3.50GHz, with 32GB of RAM and a time limit of 60 seconds per model.
 
-Performance for \jkind and related solvers is shown in
+Performance comparisons are show in
 Figure~\ref{fig:benchmark}. The key describes the number of benchmarks
 solved for each tool, and the graph shows the aggregate time required
 for solving, ordered by time required per-problem, ordered
 independently for each tool. \jkind was able to verify or falsify the
-most properties, although \zthree was often the fastest tool.  We note
-that many of the benchmarks in this set are quickly evaluated: \zthree
-solves the first 400 benchmarks in just over 12 seconds.  Due to \jkind's use of
-Java and multiple threads, the JVM/\jkind startup time for an empty
+most properties, although \zthree was often the fastest tool. Many of
+the benchmarks in this set are quickly evaluated: \zthree solves the
+first 400 benchmarks in just over 12 seconds.  Due to \jkind's use of
+Java, the JVM/\jkind startup time for an empty
 model is approximately 0.35s, which leads to poor performance on small
 models\footnote{Without startup time, the curve for \jkind is close to
-  the curve for \zustre}.  As always, such benchmarks should be taken with
-a large grain of salt.  In~\cite{champion2016cav}, a different set of
-benchmarks slightly favored \kind2, and in~\cite{cimatti2014tacas}, \nuxmv was the most capable tool.  We believe that all the solvers are relatively competitive.
+  the curve for \zustre}.  As always, such benchmarks should be taken
+with a large grain of salt.  In~\cite{champion2016cav}, a different
+set of benchmarks slightly favored \kind2, and
+in~\cite{cimatti2014tacas}, \nuxmv was the most capable tool.  We
+believe that all the solvers are relatively competitive.
 
 
-\begin{figure}
+\begin{figure}[t]
   \begin{center}
     \includegraphics[width=\textwidth]{graph.png}
   \end{center}
@@ -413,11 +414,11 @@ program under contract FA8750-12-9-0179.
 % End:
 
 %  LocalWords:  BMC PDR IVC MaxSat Yices SpeAR SIMPAL Gryphon UI JVM
-%  LocalWords:  JKindApi natively Kind IMPerative AnaLyzer IVCs IC GB
+%  LocalWords:  natively Kind IMPerative AnaLyzer IVCs IC GB
 %  LocalWords:  postconditions DARPA HACMS NuXmv Zustre VC SMT CVC ic
 %  LocalWords:  architected CAV benchmarking superset Xeon DSL SMV
 %  LocalWords:  ESBMC DepthK VVT CPAchecker CPROVER Synopsys MathSAT
 %  LocalWords:  Acknowledgements traceability SMTInterpol invariants
-%%  LocalWords:  Reachability reachability JKind runtime invar AADL
+%%  LocalWords:  Reachability reachability runtime invar AADL
 %%  LocalWords:  compositional liveness
 
