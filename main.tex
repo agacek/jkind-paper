@@ -317,9 +317,30 @@ supports guided reachability and $k$-liveness.  Other tools such as
   CPROVER} \cite{brain2015safety} use similar techniques for
 reasoning about C programs.
 
-We believe that the \jkind IVC support is similar to~\emph{proof-core} support provided by commercial hardware model checkers: Cadence Jasper Gold and Synopsys VC Formal~\cite{hanna2015formal, jasper_gold, Synopsys_VC_formal}.  The proof-core provided by these tools is used for internal coverage analysis measurements performed by the tools.  Unfortunately, the algorithms used in the commercial tool support are undocumented and performance comparisons are prohibited by the tool licenses, so it is not possible to compare performance on this aspect.
+We believe that the \jkind IVC support is similar to~\emph{proof-core}
+support provided by commercial hardware model checkers: Cadence Jasper
+Gold and Synopsys VC Formal~\cite{hanna2015formal, jasper_gold,
+  Synopsys_VC_formal}.  The proof-core provided by these tools is used
+for internal coverage analysis measurements performed by the tools.
+Unfortunately, the algorithms used in the commercial tool support are
+undocumented and performance comparisons are prohibited by the tool
+licenses, so it is not possible to compare performance on this aspect.
 
-There are several tools that support reuse or exchange of verification results, similar to our {\em advice} feature.  Recently, there has been progress on standardized formats~\cite{Beyer:2016} of exchange between analysis tools.  Our current advice format is optimized for use and performance with our particular tool and designed for re-verification rather than exchange of partial verification information.  However, supporting a standardized format for exchanging verification information would be a useful feature for future use.
+Previous work has been done on improving the quality of
+counterexamples along various dimensions similar to the JKind notion
+of {\em smoothing}, e.g. \cite{groce2005bmc, ravi2004tacas}. Our work
+is distinguished by its focus on minimizing the number of deltas in
+the input values. This metric has been driven by user needs and by our
+own experiences with test case generation.
+
+There are several tools that support reuse or exchange of verification
+results, similar to our {\em advice} feature.  Recently, there has
+been progress on standardized formats~\cite{Beyer:2016} of exchange
+between analysis tools.  Our current advice format is optimized for
+use and performance with our particular tool and designed for
+re-verification rather than exchange of partial verification
+information.  However, supporting a standardized format for exchanging
+verification information would be a useful feature for future use.
 
 
 % \paragraph{Simulation.} To help users and developers to understand
